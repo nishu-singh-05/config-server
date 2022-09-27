@@ -5,16 +5,16 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE-APPLICATION
           predicates:
-            - Path=/customer/**
+            - Path=/user/**
 #            - Path=/seller/**
           filter:
-            - RewritePath=/customer(?<segment>/?.*), $\{segment}
+            - RewritePath=/user(?<segment>/?.*), $\{segment}
         - id: user-service
           uri: lb://USER-SERVICE-APPLICATION
           predicates:
-            - Path=/seller/**
+            - Path=/user/**
           filter:
-            - RewritePath=/seller(?<segment>/?.*), $\{segment}
+            - RewritePath=/user(?<segment>/?.*), $\{segment}
         - id: auth-service
           uri: http://localhost:8082
           predicates:
@@ -39,4 +39,4 @@ eureka:
       hostname: localhost
 
 server:
-  port: 8085
+  port: 8080
