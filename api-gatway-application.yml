@@ -24,7 +24,7 @@ spring:
           predicates:
             - Path=/product/**
         - id: feedback-service
-          uri: lb://FEEDBACK-SERVICE
+          uri: lb://feedback-service-application
           predicates:
             - Path=/feedback/**
 
