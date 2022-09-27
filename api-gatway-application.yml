@@ -3,7 +3,7 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: lb://USER_SERVICE_APPLICATION
+          uri: lb://user-service-application
           predicates:
             - Path=/customer/**
 #            - Path=/seller/**
