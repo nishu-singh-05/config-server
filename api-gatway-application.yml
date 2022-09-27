@@ -3,24 +3,24 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: lb://user-service-application
           predicates:
             - Path=/customer/**
 #            - Path=/seller/**
           filter:
             - RewritePath=/customer(?<segment>/?.*), $\{segment}
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: lb://user-service-application
           predicates:
             - Path=/seller/**
           filter:
             - RewritePath=/seller(?<segment>/?.*), $\{segment}
         - id: auth-service
-          uri: lb://AUTHENTICATION-SERVICE
+          uri: lb://authentication-service-application
           predicates:
             - Path=/auth/**
         - id: product-service
-          uri: lb://PRODUCT-SERVICE
+          uri: lb://product-management-service-application
           predicates:
             - Path=/product/**
         - id: feedback-service
