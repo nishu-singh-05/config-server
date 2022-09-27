@@ -5,16 +5,16 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE-APPLICATION
           predicates:
-            - Path=/user/**
+            - Path=/customer/**
 #            - Path=/seller/**
           filter:
-            - RewritePath=/user(?<segment>/?.*), $\{segment}
+            - RewritePath=/customer(?<segment>/?.*), $\{segment}
         - id: user-service
           uri: lb://USER-SERVICE-APPLICATION
           predicates:
-            - Path=/user/**
+            - Path=/seller/**
           filter:
-            - RewritePath=/user(?<segment>/?.*), $\{segment}
+            - RewritePath=/seller(?<segment>/?.*), $\{segment}
         - id: auth-service
           uri: http://localhost:8082
           predicates:
