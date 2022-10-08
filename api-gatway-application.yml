@@ -3,14 +3,14 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: lb://USER-SERVICE-APPLICATION
+          uri: http://localhost:8081
           predicates:
             - Path=/customer/**
 #            - Path=/seller/**
           filter:
             - RewritePath=/customer(?<segment>/?.*), $\{segment}
         - id: user-service
-          uri: lb://USER-SERVICE-APPLICATION
+          uri: http://localhost:8081
           predicates:
             - Path=/seller/**
           filter:
@@ -24,7 +24,7 @@ spring:
           predicates:
             - Path=/product/**
         - id: feedback-service
-          uri: lb://FEEDBACK-SERVICE-APPLICATION
+          uri: http://localhost:8086
           predicates:
             - Path=/feedback/**
 
