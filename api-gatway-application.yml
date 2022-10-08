@@ -24,7 +24,7 @@ spring:
           predicates:
             - Path=/product/**
         - id: feedback-service
-          uri: http://localhost:8096
+          uri: feedback-service-application
           predicates:
             - Path=/feedback/**
 
