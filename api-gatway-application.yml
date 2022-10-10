@@ -14,14 +14,14 @@ spring:
           predicates:
             - Path=/customer/**
 #            - Path=/seller/**
-          filter:
-            - RewritePath=/customer(?<segment>/?.*), $\{segment}
+#           filter:
+#             - RewritePath=/customer(?<segment>/?.*), $\{segment}
         - id: user-service
           uri: http://localhost:8091
           predicates:
             - Path=/seller/**
-          filter:
-            - RewritePath=/seller(?<segment>/?.*), $\{segment}
+#           filter:
+#             - RewritePath=/seller(?<segment>/?.*), $\{segment}
         - id: auth-service
           uri: http://localhost:8092
           predicates:
