@@ -10,7 +10,7 @@ spring:
             exposedHeaders: "*"
       routes:
         - id: user-service
-          uri: http://localhost:8091
+          uri: lb://USER-SERVICE-APPLICATION
           predicates:
             - Path=/user-service/**
           filter:
