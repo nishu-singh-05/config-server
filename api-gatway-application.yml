@@ -12,16 +12,16 @@ spring:
         - id: user-service
           uri: http://localhost:8091
           predicates:
-            - Path=/customer/**
+            - Path=/user-service/**
           filter:
-            - RewritePath=/customer(?<segment>/?.*), $\{segment}
+            - RewritePath=/user-service(?<segment>/?.*), $\{segment}
 
 #         - id: user-services
 #           uri: http://localhost:8091
 #           predicates:
-#             - Path=/seller/**
+#             - Path=/user-service/**
 #           filter:
-#             - RewritePath=/seller(?<segment>/?.*), $\{segment}
+#             - RewritePath=/user-service(?<segment>/?.*), $\{segment}
 
             - id: authentication-service
             uri: http://localhost:8092
