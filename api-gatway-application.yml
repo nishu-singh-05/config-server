@@ -16,27 +16,34 @@ spring:
           filter:
             - RewritePath=/customer(?<segment>/?.*), $\{segment}
 
-        - id: authentication-service
-          uri: http://localhost:8092
+        - id: user-services
+          uri: http://localhost:8091
           predicates:
-            - Path= /auth/**
+            - Path=/seller/**
           filter:
-            - RewritePath=/auth(?<segment>/?.*), $\{segment}
-            
+            - RewritePath=/seller(?<segment>/?.*), $\{segment}
+
+            - id: authentication-service
+            uri: http://localhost:8092
+            predicates:
+              - Path= /auth/**
+              filter:
+                - RewritePath=/auth(?<segment>/?.*), $\{segment}
+
         - id: product-service
           uri: http://localhost:8093
           predicates:
             - Path=/product/**
           filter:
             - RewritePath=/product(?<segment>/?.*), $\{segment}
-          
+
         - id: feedback-service
           uri: http://localhost:8096
           predicates:
             - Path=/feedback/**
           filter:
             - RewritePath=/feedback(?<segment>/?.*), $\{segment}
-          
+
 
 eureka:
   client:
