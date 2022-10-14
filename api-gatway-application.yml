@@ -1,53 +1,59 @@
-spring:
-#   main: 
-#     web-application-type: reactive
-  cloud:
-    gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
-            allowedHeaders: "*"
-            exposedHeaders: "*"
-      routes:      
+# spring:
+#   cloud:
+#     gateway:
+#       globalcors:
+#         corsConfigurations:
+#           '[/**]':
+#             allowedOrigins: "*"
+#             allowedMethods: "*"
+#             allowedHeaders: "*"
+#             exposedHeaders: "*"
+#       routes:      
       
-        - id: user-service
-          uri: http://localhost:8091
-          predicates:
-            - Path=/userservice/**
-           filter:
-             - RewritePath=/userservice(?<segment>/?.*), $\{segment}
+#         - id: user-service
+#           uri: http://localhost:8091
+#           predicates:
+#             - Path=/userservice/**
+#            filter:
+#              - RewritePath=/userservice(?<segment>/?.*), $\{segment}
      
-        - id: authentication-service
-          uri: http://localhost:8092
-          predicates:
-            - Path= /auth/**
-          filter:
-            - RewritePath=/auth(?<segment>/?.*), $\{segment}
-
-        - id: product-service
-          uri: http://localhost:8093
-          predicates:
-            - Path=/product/**
-          filter:
-            - RewritePath=/product(?<segment>/?.*), $\{segment}
-
-        - id: feedback-service
-          uri: http://localhost:8096
-          predicates:
-            - Path=/feedback/**
-          filter:
-            - RewritePath=/feedback(?<segment>/?.*), $\{segment}
-         
-        - id: prokart-webapp
-          uri: http://localhost:8094
-          predicates:
-            - Path=/**
+#         - id: authentication-service
+#           uri: http://localhost:8092
+#           predicates:
+#             - Path= /auth/**
 #           filter:
-#             - RewritePath=(?<segment>/?.*), $\{segment}
+#             - RewritePath=/auth(?<segment>/?.*), $\{segment}
+
+#         - id: product-service
+#           uri: http://localhost:8093
+#           predicates:
+#             - Path=/product/**
+#           filter:
+#             - RewritePath=/product(?<segment>/?.*), $\{segment}
+
+#         - id: feedback-service
+#           uri: http://localhost:8096
+#           predicates:
+#             - Path=/feedback/**
+#           filter:
+#             - RewritePath=/feedback(?<segment>/?.*), $\{segment}
+         
+#         - id: prokart-webapp
+#           uri: http://localhost:8094
+#           predicates:
+#             - Path=/**
+# #           filter:
+# #             - RewritePath=(?<segment>/?.*), $\{segment}
 
 
+spring:
+  cloud: 
+    gateway: 
+      discovery: 
+        localtor: 
+          enabled: true
+          lowerCaseServiceId: true
+      
 eureka:
   client:
     register-with-eureka: true
