@@ -22,9 +22,9 @@ spring:
         - id: authentication-service
           uri: http://localhost:8092
           predicates:
-            - Path= /auth/**
-#           filter:
-#             - RewritePath=/authservice(?<segment>/?.*), $\{segment}
+            - Path= /authservice/**
+          filter:
+            - RewritePath=/authservice(?<segment>/?.*), $\{segment}
 
         - id: product-service
           uri: http://localhost:8093
