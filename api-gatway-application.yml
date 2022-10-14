@@ -11,6 +11,13 @@ spring:
             allowedHeaders: "*"
             exposedHeaders: "*"
       routes:      
+      
+        - id: userservice
+          uri: http://localhost:8091
+          predicates:
+            - Path=/userservice/**
+          filter:
+            - RewritePath=/userservice(?<segment>/?.*), $\{segment}
      
         - id: authentication-service
           uri: http://localhost:8092
@@ -18,14 +25,6 @@ spring:
             - Path= /auth/**
           filter:
             - RewritePath=/auth(?<segment>/?.*), $\{segment}
-            
-         - id: user-service
-          uri: http://localhost:8091
-          predicates:
-            - Path=/customer/**
-            - Path=/seller/**
-          filter:
-            - RewritePath=/user(?<segment>/?.*), $\{segment}
 
         - id: product-service
           uri: http://localhost:8093
