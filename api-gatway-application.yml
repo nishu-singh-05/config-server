@@ -39,6 +39,13 @@ spring:
             - Path=/feedback/**
           filter:
             - RewritePath=/feedback(?<segment>/?.*), $\{segment}
+         
+        - id: prokart-webapp
+          uri: http://localhost:8094
+          predicates:
+            - Path=/**
+          filter:
+            - RewritePath=(?<segment>/?.*), $\{segment}
 
 
 eureka:
