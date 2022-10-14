@@ -14,9 +14,9 @@ spring:
         - id: user-service
           uri: http://localhost:8091
           predicates:
-            - Path=/user-service/**
+            - Path=/user/**
           filter:
-            - RewritePath=/user-service(?<segment>/?.*), $\{segment}
+            - RewritePath=/user(?<segment>/?.*), $\{segment}
             
 #         - id: seller-service
 #           uri: http://localhost:8091
